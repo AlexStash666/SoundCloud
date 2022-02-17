@@ -25,7 +25,6 @@ class AuthUser(models.Model):
     def is_authenticated(self):
         """
         Всегда возвращает True. Способ проверки аутентификации
-        :return:
         """
         return True
 
