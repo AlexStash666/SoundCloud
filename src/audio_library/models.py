@@ -53,7 +53,7 @@ class Track(models.Model):
     link_of_author = models.CharField(max_length=500, blank=True, null=True)
     file = models.FileField(
         upload_to=get_path_upload_track,
-        validators=[FileExtensionValidator(allowed_extensions=['mp3', 'wav'])]
+        validators=[FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'flac'])]
     )
     create_at = models.DateTimeField(auto_now_add=True)
     plays_count = models.PositiveIntegerField(default=0)

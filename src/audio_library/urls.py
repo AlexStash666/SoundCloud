@@ -21,6 +21,7 @@ urlpatterns = [
     path('track/<int:pk>/',
          views.TrackView.as_view({'put': 'update', 'delete': 'destroy'})),
 
+    path('stream-author-track/<int:pk>/', views.StreamingFileAuthorView.as_view()),
     path('comments/', views.CommentAuthorView.as_view({'get': 'list', 'post': 'create'})),
     path('comments/<int:pk>/',
          views.CommentAuthorView.as_view({'put': 'update', 'delete': 'destroy'})),
