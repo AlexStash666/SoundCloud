@@ -1,17 +1,14 @@
 import os
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = os.environ.get("SECRET_KEY", 'django-insecure-^s3t%@$ef4g+5wa+oaw(cui00&@r5ej@h$(yk-)t(!t^+8zq$e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ.get("DEBUG", False)))
+DEBUG = bool(int(os.environ.get("DEBUG", True)))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(" ")
-
 
 # Application definition
 
@@ -64,7 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -74,7 +70,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES ={
+DATABASES = {
     'default': {
         "ENGINE": os.environ.get("POSTGRES_ENGINE", "django.db.backends.sqlite3"),
         "NAME": os.environ.get("POSTGRES_DB", os.path.join(BASE_DIR, 'db.sqlite3')),
@@ -103,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -124,7 +119,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES = 60*24
+ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
 
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
 GOOGLE_SECRET_KEY = os.environ.get("GOOGLE_SECRET_KEY")
@@ -154,4 +149,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "http://127.0.0.1",
+    "http://localhost:8001",
+    "http://127.0.0.1:8001",
 ]
